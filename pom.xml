@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.plutext</groupId>
+	<artifactId>docx4j-basex</artifactId>
+	<version>1.0.0</version>
+
+    <packaging>jar</packaging>
+
+	<name>docx4j-basex</name>
+	<description>
+		demo of opening/saving docx/pptx/xlsx from/to basex in docx4j
+	</description>
+	<url>http://www.docx4java.org/</url>
+	<prerequisites />
+	<inceptionYear>2013</inceptionYear>
+	<developers>
+		<developer>
+			<id>jharrop</id>
+			<name>Jason Harrop</name>
+			<email>jason@plutext.org</email>
+			<organization>Plutext</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+10</timezone>
+		</developer>
+	</developers>
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<outputDirectory>bin</outputDirectory>
+		<testOutputDirectory>bin</testOutputDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<verbose>false</verbose>
+					<!--<maxmemory>512m</maxmemory>  -->
+					<!-- try to help maven to find package com.sun.xml.internal.bind.marshaller: 
+		               <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+		               but this doesn't help
+		            -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+		</plugins>
+	</build>
+	
+  <repositories>
+     <repository>
+        <id>sardine-google-svn-repo</id>
+        <snapshots> <enabled>true</enabled> </snapshots>
+        <name>Sardine maven repo at Google Code</name>
+        <url>http://sardine.googlecode.com/svn/maven/</url>
+     </repository>
+     <!-- 
+     <repository>
+         <id>ettrema-repo</id>
+			<url>http://milton.io/maven/</url>
+     </repository>
+      -->     
+    <repository>
+      <id>basex</id>
+      <name>BaseX Maven Repository</name>
+      <url>http://files.basex.org/maven</url>
+    </repository>
+  </repositories>
+  	
+	<dependencies>
+	    
+	    <dependency>
+	      <groupId>org.basex</groupId>
+	      <artifactId>basex-api</artifactId>
+	      <version>7.5.1-SNAPSHOT</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-nop</artifactId>
+					</exclusion>
+				</exclusions>			
+	      	    </dependency>
+	    	    
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.mail</groupId>
+						<artifactId>mail</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jdmk</groupId>
+						<artifactId>jmxtools</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jmx</groupId>
+						<artifactId>jmxri</artifactId>
+					</exclusion>
+				</exclusions>			
+		</dependency>
+
+		<dependency>
+		  <groupId>org.docx4j</groupId>
+		  <artifactId>docx4j</artifactId>
+			<version>3.0.0-SNAPSHOT</version>  
+		</dependency>
+
+		<!-- 
+		<dependency>
+			<groupId>io.milton</groupId>
+			<artifactId>milton-client</artifactId>
+			<version>2.3.0.3</version>
+		</dependency>
+		 -->
+		 
+    	<dependency>
+	      <groupId>com.googlecode.sardine</groupId>
+	      <artifactId>sardine</artifactId>
+	      <version>314</version>
+	    </dependency>
+
+		<!--  Sardine needs org/slf4j/LoggerFactory -->    
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <version>1.7.2</version>
+		</dependency>
+    
+	</dependencies>
+	
+</project>
